@@ -11,11 +11,11 @@
 
 def fibAdel(n: int) -> int:
     if n == 0: return n
-    penultimo: int = 0
-    ultimo:    int = 1
+    fib_anterior_2: int = 0
+    fib_anterior_1: int = 1
     for _ in range(1, n):
-        penultimo, ultimo = ultimo, penultimo + ultimo
-    return ultimo
+        fib_anterior_2, fib_anterior_1 = fib_anterior_1, fib_anterior_2 + fib_anterior_1
+    return fib_anterior_1
 
 if __name__ == "__main__":
     while True:
