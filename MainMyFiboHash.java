@@ -1,4 +1,5 @@
-//Programa para notar el manejo básico de la clase Hashtable en Java aplicado a la sucesión de Fibonacci
+//Programa para notar el manejo básico de la clase Hashtable en Java aplicado a la sucesión de Fibonacci.
+//Actividad 3.
 
 import java.util.Hashtable;
 
