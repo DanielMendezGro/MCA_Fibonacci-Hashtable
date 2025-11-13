@@ -15,7 +15,7 @@ if __name__ == "__main__":
     n = int(input("¿De qué posición quieres el valor de Fibonacci?: "))
     print(f"El  {n}-ésimo valor de Fibonacci es: {fibAdel(n)}") 
 
-// Código 2: fibonacci_haciaAdelanteGenerator1.py
+/* Código 2: fibonacci_haciaAdelanteGenerator1.py */
 
 from typing import Generator
     
