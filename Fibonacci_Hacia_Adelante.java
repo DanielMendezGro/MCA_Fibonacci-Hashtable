@@ -18,5 +18,13 @@ def fibAdel(n: int) -> int:
     return ultimo
 
 if __name__ == "__main__":
-    n = int(input("¿De qué posición quieres el valor de Fibonacci?: "))
+    while True:
+        try:
+            n = int(input("¿De qué posición quieres el valor de Fibonacci?: "))
+            if n < 0:
+                print("El número debe ser mayor o igual a 0")
+                continue
+            break
+        except ValueError:
+            print("Por favor, ingrese un número válido")
     print(f"El  {n}-ésimo valor de Fibonacci es: {fibAdel(n)}") 
