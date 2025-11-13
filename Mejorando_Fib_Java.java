@@ -9,3 +9,60 @@
 
 // Código 1: FibonacciThreads.java
 
+import java.util.concurrent.ConcurrentHashMap;
+import java.lang.Math;
+
+public class FibonacciThreads implements Runnable{
+
+static ConcurrentHashMap<Long, Long> memo = new ConcurrentHashMap();
+
+    static {
+        memo.put(0L, 1L); 
+        memo.put(1L, 1L);
+    }
+  
+    int num;
+    long f1; 
+
+    public FibonacciThreads(int n, long f) {
+        num = n;
+        f1 = f;
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Starte " + num);
+        long res = fibonacci(f1);
+        System.out.println("Abschlussverfahren: " + num + 
+                           " - " + "Fibonacci(" + f1 + ") = " + res);
+    }
+
+    long fibonacci(long f) {
+        
+        if (memo.containsKey(f)) {
+            return memo.get(f);
+        }
+
+        if (f < 2) {
+            return 1;
+        }
+
+        long res = fibonacci(f - 1) + fibonacci(f - 2);
+        
+        memo.put(f, res); 
+        
+        return res;
+    }
+
+    public static void main(String[] args) {
+        Thread[] threads = new Thread[10];
+
+        for (int i = 0; i < 10; i++) {
+            threads[i] = new Thread(new FibonacciThreads(i, (long) (Math.random() * 56) + 1));
+        }
+
+        for (int i = 0; i < 10; i++) {
+            threads[i].start();
+        }
+    }
+}
