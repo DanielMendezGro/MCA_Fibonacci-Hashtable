@@ -9,3 +9,67 @@
 
 // Código 2: FibonacciThreadsBigInteger.java
 
+import java.math.BigInteger;
+import java.util.concurrent.ConcurrentHashMap;
+import java.lang.Math;
+
+public class FibonacciThreadsBigInteger implements Runnable {
+
+    static ConcurrentHashMap<BigInteger, BigInteger> memo = new ConcurrentHashMap<>();
+  
+    static {
+        memo.put(BigInteger.ZERO, BigInteger.ZERO);
+        memo.put(BigInteger.ONE, BigInteger.ONE);
+    }
+    
+    BigInteger f1;
+    int num;
+
+    public FibonacciThreadsBigInteger(int n, BigInteger f) {
+        num = n;
+        f1 = f;
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Starte #" + num);
+        BigInteger res = fibonacci(f1);
+        System.out.println("Abschlussverfahren: " + num + 
+                           " - " + "Fibonacci(" + f1 + ") = " + res);
+    }
+
+    public BigInteger fibonacci(BigInteger f) {
+
+        if (memo.containsKey(f)) {
+            return memo.get(f);
+        }
+
+        if (f.compareTo(BigInteger.ONE) <= 0) {
+            return f; 
+        }
+
+        BigInteger res = fibonacci(f.subtract(BigInteger.ONE))
+            .add(fibonacci(f.subtract(BigInteger.TWO)));
+
+        memo.put(f, res);
+        
+        return res;
+    }
+
+    public static void main(String[] args) {
+        Thread[] threads = new Thread[10];
+
+        for (int i = 0; i < 10; i++) {
+            long algo = (long) (Math.random() * 56) + 1;
+            
+            threads[i] = new Thread(new FibonacciThreadsBigInteger(
+                i, 
+                BigInteger.valueOf(algo)
+            ));
+        }
+
+        for (int i = 0; i < 10; i++) {
+            threads[i].start();
+        }
+    }
+}
