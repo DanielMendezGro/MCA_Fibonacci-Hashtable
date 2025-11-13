@@ -21,4 +21,4 @@ Noviembre 12, 2025
 Referencia: https://github.com/RobertoMendezM/MCA1_2026-1/blob/main/Sucesiones/fibonacci_haciaAdelnate1.py
             
 Nota: Este código fue modificado de su fuente original para cumplir con los requerimentos solicitados de la actividad.
-Compilador online utilizado: https://www.onlinegdb.com/online_java_compiler */
+Compilador online utilizado: https://www.onlinegdb.com/online_java_compiler *//
