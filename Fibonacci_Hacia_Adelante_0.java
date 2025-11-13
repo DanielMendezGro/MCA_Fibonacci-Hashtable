@@ -22,6 +22,15 @@ def fibGen(n: int) -> Generator[int, None, None]:
         yield ultimo
 
 if __name__ == "__main__":
-    n = int(input("¿Fibonacci hasta la posición?: "))
+    while True:
+        try:
+            n = int(input("¿Fibonacci hasta la posición?: "))
+            if n < 0:
+                print("El número debe ser mayor o igual a 0")
+                continue
+            break
+        except ValueError:
+            print("Por favor, ingrese un número válido")
+    print(f"Calculando hasta la posición {n}: ")
     for i in fibGen(n):    
         print(i)
