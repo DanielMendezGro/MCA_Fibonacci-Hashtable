@@ -15,11 +15,11 @@ def fibGen(n: int) -> Generator[int, None, None]:
     yield 0
     if n > 0:
         yield 1
-    penultimo: int = 0
-    ultimo:    int = 1
+    fib_anterior_2: int = 0
+    fib_anterior_1: int = 1
     for _ in range(1, n):
-        penultimo, ultimo = ultimo, penultimo + ultimo
-        yield ultimo
+        fib_anterior_2, fib_anterior_1 = fib_anterior_1, fib_anterior_2 + fib_anterior_1
+        yield fib_anterior_1
 
 if __name__ == "__main__":
     while True:
