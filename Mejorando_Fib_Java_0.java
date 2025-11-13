@@ -73,3 +73,5 @@ public class FibonacciThreadsBigInteger implements Runnable {
         }
     }
 }
+
+// Nota: Aunque este código no pide entrada, si fuese el caso, el máximo valor que podría calcular sería aquel que nuestro dispositivo tenga como tope.
